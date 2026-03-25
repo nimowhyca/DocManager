@@ -1,0 +1,7 @@
+# 3.14.3
+
+# mentor : python -m venv venv
+
+# uv pin python 3.14.3 -> uv init --> uv sync
+
+# venv\Scripts\activate
