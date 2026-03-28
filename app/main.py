@@ -8,7 +8,11 @@ sys.path.append(BASE_DIR)
 
 from db.database import init_db
 
+from core.services import DocumentService
+
 init_db()
+
+service = DocumentService()
 
 st.set_page_config(page_title="DocManager",layout="wide")
 
@@ -19,8 +23,19 @@ st.divider()
 tabs = st.tabs(["Upload", "Search & View", "Analytics"])
 
 with tabs[0]:
-    # logic of upload
-    pass
+    st.header("Upload PDF")
+
+    uploaded_file = st.file_uploader("Upload PDF", type=["pdf"])
+    tags = st.text_input("Tags (comma separated)")
+    description = st.text_area("Description")
+    lecture_date = st.date_input("Lecture Date (optional)", value=None)
+
+    if st.button("Upload"):
+        # if uploaded_file and tags and description:
+        if uploaded_file:
+            service.upload_document(uploaded_file, tags, description, lecture_date)
+        else :
+            st.error("Please upload a file")
 
 with tabs[1]:
     # logic of Search & View
