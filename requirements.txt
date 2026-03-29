@@ -1,2 +1,5 @@
-PyMuPDF==1.27.2.2
 streamlit==1.55.0
+pandas==2.3.3
+PyMuPDF==1.27.2.2
+pillow==12.1.1
+python-dotenv==1.2.2
